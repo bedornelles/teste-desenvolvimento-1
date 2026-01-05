@@ -37,10 +37,14 @@ O script inclui:
 
 Antes de executar a aplicação, é necessário criar o banco de dados e executar o script SQL.
 
+---
+
  ## ⚙️ Configuração do Banco
 
 A string de conexão está configurada no arquivo: App.config
 Nela deve ser colocado as chaves do seu banco de dados.
+
+---
 
 ## ▶️ Executável
 
