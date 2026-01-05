@@ -4,7 +4,7 @@ Este projeto foi desenvolvido como parte de um **teste de desenvolvimento**, con
 
 ---
 
-## 📌 Funcionalidades
+# 📌 Funcionalidades
 
 - Listagem de produtos cadastrados
 - Inclusão de novos produtos
