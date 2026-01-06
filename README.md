@@ -42,7 +42,7 @@ Antes de executar a aplicação, é necessário criar o banco de dados e executa
  ## ⚙️ Configuração do Banco
 
 A string de conexão está configurada no arquivo: App.config
-Nela deve ser colocado as chaves do seu banco de dados.
+Nela deve ser colocado as credenciais do seu banco de dados.
 
 ---
 
