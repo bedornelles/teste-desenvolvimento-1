@@ -23,11 +23,6 @@ namespace CadastroProdutosCervantes
 
         }
 
-        private void BtnConsultar_Click(object sender, EventArgs e)
-        {
-            DgvProdutos.DataSource = repository.ListarProdutos();
-        }
-
         private void TxtCodigo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
