@@ -92,6 +92,25 @@ namespace CadastroProdutosCervantes
 
         }
 
+        private void InserirProduto(int codigo, string nome)
+        {
+            repository.InserirProduto(codigo, nome);
+            CarregarLista();
+        }
+
+        private bool AtualizarProduto(int codigo, string nome)
+        {
+            bool atualizado = repository.AtualizarProduto(codigo, nome);
+            if (!atualizado)
+            {
+                MessageBox.Show("Produto não encontrado. Selecione um item da lista.");
+                return false;
+            }
+
+            CarregarLista();
+            return true;
+        }
+
         private void btn_Novo_Click(object sender, EventArgs e)
         {
             TxtNome.Clear();
@@ -112,7 +131,7 @@ namespace CadastroProdutosCervantes
                 return;
             }
             if (string.IsNullOrWhiteSpace(TxtNome.Text))
-            {
+            { 
                 MessageBox.Show("Informe o nome do produto.");
                 return;
             }           
@@ -130,11 +149,7 @@ namespace CadastroProdutosCervantes
                 case eEvento.inserir:
                     try
                     {
-                        repository.InserirProduto(codigo, nome);
-
-                        DgvProdutos.DataSource = repository.ListarProdutos();
-                        TxtCodigo.Clear();
-                        TxtNome.Clear();
+                        InserirProduto(codigo, nome);
 
                         MessageBox.Show("Produto inserido!");
                     }
@@ -146,23 +161,13 @@ namespace CadastroProdutosCervantes
                     {
                         MessageBox.Show(ex.Message);
                     }
-            
                     break;
 
                 case eEvento.atualizar:
                     try
                     {
-                        bool atualizado = repository.AtualizarProduto(codigo, nome);
-
-                        if (!atualizado)
-                        {
-                            MessageBox.Show("Produto não encontrado. Selecione um item da lista.");
-                            return;
-                        }
-
-                        DgvProdutos.DataSource = repository.ListarProdutos();
-                        TxtCodigo.Clear();
-                        TxtNome.Clear();
+                        bool sucesso = AtualizarProduto(codigo, nome);
+                        if (!sucesso) return;
 
                         MessageBox.Show("Produto atualizado!");
                     }
@@ -171,10 +176,10 @@ namespace CadastroProdutosCervantes
                         MessageBox.Show(ex.Message);
                     }
                     break;
-                default:
-                    break;                   
             }
             evento = eEvento.atualizar;
+            TxtCodigo.Clear();
+            TxtNome.Clear();
 
         }
     }
